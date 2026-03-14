@@ -1,0 +1,11 @@
+# Git detects text files automatically
+* text=auto
+
+# Python files treated as text
+*.py text
+
+# Dataset files treated as text
+*.csv text
+
+# Notebooks treated as binary (prevents merge conflicts)
+*.ipynb binary

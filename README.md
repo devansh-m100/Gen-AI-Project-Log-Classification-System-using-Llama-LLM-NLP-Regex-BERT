@@ -31,3 +31,7 @@ errors faced and resolved -
 1) Ensure kernel is selected "venv python"
 2) while dealing with sentence transformers microsoft visual c++ redistributable was nnecessary to install.
 3) in sentence transformer section progress was not visible of output so had to install ipywidgets and also wanted to ensure jupyter components are updated too, so ran te command pip install --upgrade jupyter ipywidgets
+
+suggested improvement in vscode that I need and felt required - 
+
+When I click generate and start typing my query and if using alt + tab I switch the windows then, already some part of written prompt by me also gets deleted and I have start newly again to write the prompt. This should be fixed.

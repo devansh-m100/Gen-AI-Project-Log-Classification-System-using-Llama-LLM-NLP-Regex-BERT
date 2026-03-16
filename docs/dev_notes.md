@@ -32,18 +32,27 @@ This document records implementation details, observations, experiments, and cha
 
 - Also maintained a separate regex, bert, llm classification logic into dedicated respective files to improve code organization, reusability, and maintainability.
 
-- Those non regex target labels, having 5 or less log entries can be processed using llm and others with BERT.
+- Implemented the `classify.py` module to orchestrate the log classification process.
 
-- A classify.py file is separately maintained which allows the classification of log entries to be further classfied using llm or bert.
+- The module uses a hybrid classification pipeline combining Regex, BERT, and LLM-based processors.
+
+- Classification method selection is determined by the log source and whether a regex pattern match is found.
+
+- Logs from `LegacyCRM` are routed to the LLM-based classifier, while other logs are first processed using regex rules with a BERT fallback if no regex match is found.
+
+- The module also supports processing logs from an input CSV file.
+
+- The classified results are written to a new CSV file containing an additional column `target_label` that stores the predicted log category.
+
+- Installed `python-dotenv` and `groq` packages and added a `.env` file to store the Groq API key securely.
+
+- The Groq API is used as a free service with usage limits; API consumption and remaining quota can be monitored through the Groq dashboard on the official website.
 
 ---
 
 # 7. Challenges Encountered
 
-1. HuggingFace model download warnings appeared due to Windows symlink restrictions.
-2. Virtual environment configuration required alignment with the notebook kernel.
-3. Clustering parameter tuning required experimentation.
-4. Some logs contained ambiguous semantics, resulting in mixed clusters.
+- Updated Groq LLM model in processor_llm.py file after `deepseek-r1-distill-llama-70b` was deprecated and replaced it with a supported model.
 
 ---
 
